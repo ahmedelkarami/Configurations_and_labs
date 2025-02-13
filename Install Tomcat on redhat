@@ -1,140 +1,88 @@
----
-
-## Installer Tomcat 10 sur Red Hat 9
-
-Dans ce guide, nous allons installer Apache Tomcat 10 sur Red Hat 9. Tomcat est un serveur d'applications Java largement utilisé pour déployer des applications web. Nous allons également configurer Tomcat pour qu'il démarre automatiquement au démarrage du système.
-
----
-
-### **1. Mettre à jour le système**
-Avant de commencer, assurez-vous que votre système est à jour :
-```bash
-sudo dnf update -y
-```
-
----
-
-### **2. Installer Apache HTTP Server (optionnel)**
-Si vous souhaitez utiliser Apache comme reverse proxy pour Tomcat, installez-le :
-```bash
-sudo dnf install httpd -y
-```
-
-Démarrez et activez Apache :
-```bash
-sudo systemctl start httpd
+<hr>
+<h2>Installer Tomcat 10 sur Red Hat 9</h2>
+<p>Dans ce guide, nous allons installer Apache Tomcat 10 sur Red Hat 9. Tomcat est un serveur d'applications Java largement utilisé pour déployer des applications web. Nous allons également configurer Tomcat pour qu'il démarre automatiquement au démarrage du système.</p>
+<hr>
+<h3><strong>1. Mettre à jour le système</strong></h3>
+<p>Avant de commencer, assurez-vous que votre système est à jour :</p>
+<pre><code class="language-bash">sudo dnf update -y
+</code></pre>
+<hr>
+<h3><strong>2. Installer Apache HTTP Server (optionnel)</strong></h3>
+<p>Si vous souhaitez utiliser Apache comme reverse proxy pour Tomcat, installez-le :</p>
+<pre><code class="language-bash">sudo dnf install httpd -y
+</code></pre>
+<p>Démarrez et activez Apache :</p>
+<pre><code class="language-bash">sudo systemctl start httpd
 sudo systemctl enable httpd
 sudo systemctl status httpd
-```
-
-Vérifiez qu'Apache fonctionne en accédant à l'adresse IP de votre serveur dans un navigateur ou en utilisant `curl` :
-```bash
-curl http://$(hostname -I)
-```
-
-Autorisez le trafic HTTP dans le firewall :
-```bash
-sudo firewall-cmd --permanent --add-service=http
+</code></pre>
+<p>Vérifiez qu'Apache fonctionne en accédant à l'adresse IP de votre serveur dans un navigateur ou en utilisant <code>curl</code> :</p>
+<pre><code class="language-bash">curl http://$(hostname -I)
+</code></pre>
+<p>Autorisez le trafic HTTP dans le firewall :</p>
+<pre><code class="language-bash">sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --reload
-```
-
----
-
-### **3. Installer Java**
-Tomcat nécessite Java pour fonctionner. Installez Java 17 (ou une version compatible) :
-```bash
-sudo dnf install java-17-openjdk-devel -y
-```
-
-Vérifiez l'installation de Java :
-```bash
-java -version
-```
-
----
-
-### **4. Télécharger et installer Tomcat 10**
-Téléchargez la dernière version de Tomcat 10 depuis le site officiel :
-```bash
-wget https://downloads.apache.org/tomcat/tomcat-10/v10.1.35/bin/apache-tomcat-10.1.35.tar.gz
-```
-
-Extrayez l'archive :
-```bash
-tar -xvzf apache-tomcat-10.1.35.tar.gz
-```
-
-Déplacez le dossier extrait vers `/opt/tomcat` (ce sera le répertoire `CATALINA_HOME`) :
-```bash
-sudo mv apache-tomcat-10.1.35 /opt/tomcat
-```
-
----
-
-### **5. Configurer les variables d'environnement**
-Ajoutez les variables d'environnement nécessaires pour Tomcat.
-
-Ouvrez le fichier `~/.bashrc` ou `/etc/profile` :
-```bash
-vi ~/.bashrc
-```
-
-Ajoutez les lignes suivantes à la fin du fichier :
-```bash
-export CATALINA_HOME=/opt/tomcat
+</code></pre>
+<hr>
+<h3><strong>3. Installer Java</strong></h3>
+<p>Tomcat nécessite Java pour fonctionner. Installez Java 17 (ou une version compatible) :</p>
+<pre><code class="language-bash">sudo dnf install java-17-openjdk-devel -y
+</code></pre>
+<p>Vérifiez l'installation de Java :</p>
+<pre><code class="language-bash">java -version
+</code></pre>
+<hr>
+<h3><strong>4. Télécharger et installer Tomcat 10</strong></h3>
+<p>Téléchargez la dernière version de Tomcat 10 depuis le site officiel :</p>
+<pre><code class="language-bash">wget https://downloads.apache.org/tomcat/tomcat-10/v10.1.35/bin/apache-tomcat-10.1.35.tar.gz
+</code></pre>
+<p>Extrayez l'archive :</p>
+<pre><code class="language-bash">tar -xvzf apache-tomcat-10.1.35.tar.gz
+</code></pre>
+<p>Déplacez le dossier extrait vers <code>/opt/tomcat</code> (ce sera le répertoire <code>CATALINA_HOME</code>) :</p>
+<pre><code class="language-bash">sudo mv apache-tomcat-10.1.35 /opt/tomcat
+</code></pre>
+<hr>
+<h3><strong>5. Configurer les variables d'environnement</strong></h3>
+<p>Ajoutez les variables d'environnement nécessaires pour Tomcat.</p>
+<p>Ouvrez le fichier <code>~/.bashrc</code> ou <code>/etc/profile</code> :</p>
+<pre><code class="language-bash">vi ~/.bashrc
+</code></pre>
+<p>Ajoutez les lignes suivantes à la fin du fichier :</p>
+<pre><code class="language-bash">export CATALINA_HOME=/opt/tomcat
 export PATH=$PATH:$CATALINA_HOME/bin
-```
-
-Appliquez les modifications :
-```bash
-source ~/.bashrc
-```
-
----
-
-### **6. Créer un utilisateur dédié pour Tomcat**
-Pour des raisons de sécurité, créez un utilisateur dédié pour exécuter Tomcat :
-```bash
-sudo useradd -r -s $(which nologin) tomcat
-```
-
-Changez le propriétaire du répertoire Tomcat :
-```bash
-sudo chown -R tomcat:tomcat $CATALINA_HOME
-```
-
-Donnez les permissions d'exécution aux scripts `startup.sh` et `shutdown.sh` :
-```bash
-sudo chmod +x $CATALINA_HOME/bin/startup.sh
+</code></pre>
+<p>Appliquez les modifications :</p>
+<pre><code class="language-bash">source ~/.bashrc
+</code></pre>
+<hr>
+<h3><strong>6. Créer un utilisateur dédié pour Tomcat</strong></h3>
+<p>Pour des raisons de sécurité, créez un utilisateur dédié pour exécuter Tomcat :</p>
+<pre><code class="language-bash">sudo useradd -r -s $(which nologin) tomcat
+</code></pre>
+<p>Changez le propriétaire du répertoire Tomcat :</p>
+<pre><code class="language-bash">sudo chown -R tomcat:tomcat $CATALINA_HOME
+</code></pre>
+<p>Donnez les permissions d'exécution aux scripts <code>startup.sh</code> et <code>shutdown.sh</code> :</p>
+<pre><code class="language-bash">sudo chmod +x $CATALINA_HOME/bin/startup.sh
 sudo chmod +x $CATALINA_HOME/bin/shutdown.sh
-```
-
----
-
-### **7. Démarrer Tomcat**
-Démarrez Tomcat manuellement pour vérifier qu'il fonctionne :
-```bash
-$CATALINA_HOME/bin/startup.sh
-```
-
-Vérifiez que Tomcat est accessible en ouvrant un navigateur ou en utilisant `curl` :
-```bash
-curl http://<votre-ip>:8080
-```
-
----
-
-### **8. Configurer Tomcat comme un service systemd**
-Pour que Tomcat démarre automatiquement au démarrage du système, créez un fichier de service systemd.
-
-Créez un fichier de service :
-```bash
-sudo vi /etc/systemd/system/tomcat.service
-```
-
-Ajoutez le contenu suivant :
-```ini
-[Unit]
+</code></pre>
+<hr>
+<h3><strong>7. Démarrer Tomcat</strong></h3>
+<p>Démarrez Tomcat manuellement pour vérifier qu'il fonctionne :</p>
+<pre><code class="language-bash">$CATALINA_HOME/bin/startup.sh
+</code></pre>
+<p>Vérifiez que Tomcat est accessible en ouvrant un navigateur ou en utilisant <code>curl</code> :</p>
+<pre><code class="language-bash">curl http://&lt;votre-ip&gt;:8080
+</code></pre>
+<hr>
+<h3><strong>8. Configurer Tomcat comme un service systemd</strong></h3>
+<p>Pour que Tomcat démarre automatiquement au démarrage du système, créez un fichier de service systemd.</p>
+<p>Créez un fichier de service :</p>
+<pre><code class="language-bash">sudo vi /etc/systemd/system/tomcat.service
+</code></pre>
+<p>Ajoutez le contenu suivant :</p>
+<pre><code class="language-ini">[Unit]
 Description=Apache Tomcat
 After=network.target
 
@@ -148,62 +96,44 @@ Group=tomcat
 
 [Install]
 WantedBy=multi-user.target
-```
-
-Rechargez systemd et démarrez le service :
-```bash
-sudo systemctl daemon-reload
+</code></pre>
+<p>Rechargez systemd et démarrez le service :</p>
+<pre><code class="language-bash">sudo systemctl daemon-reload
 sudo systemctl start tomcat
 sudo systemctl enable tomcat
 sudo systemctl status tomcat
-```
-
----
-
-### **9. Configurer le firewall pour Tomcat**
-Autorisez le trafic sur le port 8080 (port par défaut de Tomcat) :
-```bash
-sudo firewall-cmd --permanent --add-port=8080/tcp
+</code></pre>
+<hr>
+<h3><strong>9. Configurer le firewall pour Tomcat</strong></h3>
+<p>Autorisez le trafic sur le port 8080 (port par défaut de Tomcat) :</p>
+<pre><code class="language-bash">sudo firewall-cmd --permanent --add-port=8080/tcp
 sudo firewall-cmd --reload
-```
-
----
-
-### **10. Dépannage**
-#### **Problèmes de démarrage**
-- Si Tomcat ne démarre pas, vérifiez les logs :
-  ```bash
-  cat $CATALINA_HOME/logs/catalina.out
-  ```
-- Si SELinux est activé, passez en mode permissif pour tester :
-  ```bash
-  sudo setenforce 0
-  ```
-  Si cela résout le problème, ajustez les politiques SELinux ou créez une politique personnalisée.
-
-#### **Accès refusé à l'interface Manager ou Host Manager**
-Pour accéder à l'interface Manager ou Host Manager, configurez les rôles dans `tomcat-users.xml` :
-```bash
-sudo vi $CATALINA_HOME/conf/tomcat-users.xml
-```
-
-Ajoutez les rôles et utilisateurs suivants :
-```xml
-<role rolename="admin-gui"/>
-<role rolename="manager-gui"/>
-<user username="admin" password="votre_mot_de_passe" roles="admin-gui,manager-gui"/>
-```
-
-Redémarrez Tomcat pour appliquer les modifications :
-```bash
-sudo systemctl restart tomcat
-```
-
----
-
-### **Conclusion**
-Vous avez maintenant installé et configuré Apache Tomcat 10 sur Red Hat 9. Vous pouvez déployer vos applications Java en les copiant dans le répertoire `webapps` de Tomcat. N'oubliez pas de sécuriser votre installation en configurant correctement les utilisateurs, les rôles, et en utilisant HTTPS si nécessaire.
-
----
-
-N'hésitez pas à personnaliser ce guide en fonction de vos besoins spécifiques. Si vous avez des questions ou des problèmes, laissez un commentaire ci-dessous !
+</code></pre>
+<hr>
+<h3><strong>10. Dépannage</strong></h3>
+<h4><strong>Problèmes de démarrage</strong></h4>
+<ul>
+<li>Si Tomcat ne démarre pas, vérifiez les logs :<pre><code class="language-bash">cat $CATALINA_HOME/logs/catalina.out
+</code></pre>
+</li>
+<li>Si SELinux est activé, passez en mode permissif pour tester :<pre><code class="language-bash">sudo setenforce 0
+</code></pre>
+Si cela résout le problème, ajustez les politiques SELinux ou créez une politique personnalisée.</li>
+</ul>
+<h4><strong>Accès refusé à l'interface Manager ou Host Manager</strong></h4>
+<p>Pour accéder à l'interface Manager ou Host Manager, configurez les rôles dans <code>tomcat-users.xml</code> :</p>
+<pre><code class="language-bash">sudo vi $CATALINA_HOME/conf/tomcat-users.xml
+</code></pre>
+<p>Ajoutez les rôles et utilisateurs suivants :</p>
+<pre><code class="language-xml">&lt;role rolename=&quot;admin-gui&quot;/&gt;
+&lt;role rolename=&quot;manager-gui&quot;/&gt;
+&lt;user username=&quot;admin&quot; password=&quot;votre_mot_de_passe&quot; roles=&quot;admin-gui,manager-gui&quot;/&gt;
+</code></pre>
+<p>Redémarrez Tomcat pour appliquer les modifications :</p>
+<pre><code class="language-bash">sudo systemctl restart tomcat
+</code></pre>
+<hr>
+<h3><strong>Conclusion</strong></h3>
+<p>Vous avez maintenant installé et configuré Apache Tomcat 10 sur Red Hat 9. Vous pouvez déployer vos applications Java en les copiant dans le répertoire <code>webapps</code> de Tomcat. N'oubliez pas de sécuriser votre installation en configurant correctement les utilisateurs, les rôles, et en utilisant HTTPS si nécessaire.</p>
+<hr>
+<p>N'hésitez pas à personnaliser ce guide en fonction de vos besoins spécifiques. Si vous avez des questions ou des problèmes, laissez un commentaire ci-dessous !</p>
