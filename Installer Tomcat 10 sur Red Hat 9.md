@@ -1,5 +1,3 @@
-Voici une version améliorée de votre blog avec une meilleure structure, des explications plus claires, et des corrections mineures pour une meilleure lisibilité et compréhension :
-
 ---
 
 ## Installer Tomcat 10 sur Red Hat 9
