@@ -1,0 +1,13 @@
+## Install Puppet : 
+
+
+in this lab we are going to install and configure puppet ecosystem using 3 Redhat9 VMS.
+Prerequisites : 
+1 Vm for puppet-master 
+2 Vms for puppet-agents
+Use NAT as a network process to let Vms acces the internet. 
+power On those Vms.
+We will change hostname :
+- Puppet Server 
+hostnamectl set-hostname puppetmaster
+vi /etc/hosts
