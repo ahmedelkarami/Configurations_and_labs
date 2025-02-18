@@ -1,7 +1,3 @@
-Ah, I see the issue! The chapter links in the **README.md** are not clickable because the file names contain spaces and special characters (like `:` and `-`), which need to be URL-encoded in the links. Let me fix that by properly encoding the file names in the links.
-
-Here’s the corrected **README.md** with clickable chapter links:
-
 ---
 
 # Oracle Database Versions: A Technical Reference Guide for DBAs
@@ -112,11 +108,3 @@ Special thanks to the Oracle community, documentation teams, and experts whose w
 Happy learning, and may your Oracle Database journey be successful! 🚀
 
 ---
-
-### **Why the Links Were Not Clickable Earlier**
-- Spaces and special characters (like `:`) in file names need to be URL-encoded in Markdown links. For example:
-  - `:` is encoded as `%3A`.
-  - Spaces are encoded as `%20`.
-- I’ve updated the links to include the correct encoding, so they should now be clickable.
-
-Let me know if you encounter any further issues! 😊
