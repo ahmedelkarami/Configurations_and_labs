@@ -1,62 +1,38 @@
-**"Oracle Database Versions: A Technical Reference Guide for DBAs."**
+ <b> Oracle Database Versions: A Technical Reference Guide for DBAs.</b> 
 
 This chapter introduces Oracle Database's evolution, its major milestones, and the distinction between Long-Term Support (LTS) and Innovation Releases.
 
----
+<br>
 
 # **Chapter 1: Introduction to Oracle Database Evolution**
 
----
+<br>
+
+
 
 ## **1.1 History of Oracle Database**
 
-Oracle Database, developed by Oracle Corporation, is one of the most widely used relational database management systems (RDBMS). Its history spans over four decades, with each version introducing groundbreaking features that have shaped the database industry.
-
+Oracle Database, developed by Oracle Corporation, is one of the most widely used relational database management systems (RDBMS). <br>Its history spans over four decades, with each version introducing groundbreaking features that have shaped the database industry.
+<br>
 ### **Key Milestones:**
-- **1979: Oracle V2**  
-  - The first commercially available SQL-based RDBMS.
-  - Introduced the concept of a relational database.
-- **1983: Oracle Version 3**  
-  - Written in C, making it portable across different platforms.
-  - Introduced transactions and commit/rollback functionality.
-- **1984: Oracle Version 4**  
-  - Introduced read consistency.
-  - Added support for multi-version read consistency (MVCC).
-- **1985: Oracle Version 5**  
-  - Introduced client-server architecture.
-  - Supported distributed queries.
-- **1988: Oracle Version 6**  
-  - Introduced PL/SQL (Procedural Language/SQL).
-  - Added row-level locking and hot backups.
-- **1992: Oracle 7**  
-  - Introduced triggers, stored procedures, and declarative referential integrity.
-  - Added support for distributed databases.
-- **1997: Oracle 8**  
-  - Introduced object-relational features.
-  - Added Recovery Manager (RMAN) for backup and recovery.
-- **1999: Oracle 8i**  
-  - Focused on internet computing.
-  - Introduced Java support and Oracle Internet File System (iFS).
-- **2001: Oracle 9i**  
-  - Introduced Real Application Clusters (RAC) for high availability.
-  - Added Oracle Streams for data replication.
-- **2003: Oracle 10g**  
-  - Focused on grid computing.
-  - Introduced Automatic Storage Management (ASM) and Flashback Database.
-- **2007: Oracle 11g**  
-  - Introduced Real Application Testing (RAT) and Advanced Compression.
-  - Added Edition-Based Redefinition (EBR) for online upgrades.
-- **2013: Oracle 12c**  
-  - Introduced multitenant architecture (Pluggable Databases).
-  - Added In-Memory Column Store for faster analytics.
-- **2019: Oracle 19c**  
-  - Long-Term Support (LTS) release.
-  - Introduced automatic indexing and real-time statistics.
-- **2023: Oracle 23c**  
-  - Latest LTS release.
-  - Introduced JSON Relational Duality and SQL Firewall.
+| **Year**  | **Version**       | **Key Features**                                                                                   |
+|-----------|-------------------|---------------------------------------------------------------------------------------------------|
+| **1979**  | Oracle V2         | First commercially available SQLbased RDBMS. <br> Introduced the concept of a relational database. |
+| **1983**  | Oracle V3         | Written in C, making it portable across platforms. <br> Introduced transactions and commit/rollback functionality. |
+| **1984**  | Oracle V4         | Introduced read consistency. <br>  Added support for multiVread consistency (MVCC).    |
+| **1985**  | Oracle V5         | Introduced clientserver architecture. <br>  Supported distributed queries.                    |
+| **1988**  | Oracle V6         | Introduced PL/SQL (Procedural Language/SQL). <br>  Added rowlevel locking and hot backups.     |
+| **1992**  | Oracle 7          | Introduced triggers, stored procedures, and declarative referential integrity. <br>  Added support for distributed databases. |
+| **1997**  | Oracle 8          | Introduced objectrelational features. <br>  Added Recovery Manager (RMAN) for backup and recovery. |
+| **1999**  | Oracle 8i         | Focused on internet computing. <br>  Introduced Java support and Oracle Internet File System (iFS). |
+| **2001**  | Oracle 9i         | Introduced Real Application Clusters (RAC) for high availability. <br>  Added Oracle Streams for data replication. |
+| **2003**  | Oracle 10g        | Focused on grid computing. <br>  Introduced Automatic Storage Management (ASM) and Flashback Database. |
+| **2007**  | Oracle 11g        | Introduced Real Application Testing (RAT) and Advanced Compression. <br>  Added EditionBased Redefinition (EBR) for online upgrades. |
+| **2013**  | Oracle 12c        | Introduced multitenant architecture (Pluggable Databases). <br>  Added InMemory Column Store for faster analytics. |
+| **2019**  | Oracle 19c        | LongTerm Support (LTS) release. <br>  Introduced automatic indexing and realtime statistics.  |
+| **2023**  | Oracle 23c        | Latest LTS release. <br>  Introduced JSON Relational Duality and SQL Firewall.                  |
 
----
+<br>
 
 ## **1.2 Major Milestones and Innovations**
 
@@ -90,7 +66,7 @@ Oracle Database has consistently introduced innovations that have redefined the 
 - Combined the benefits of relational and JSON data models.
 - Enabled developers to work with both structured and semi-structured data seamlessly.
 
----
+<br>
 
 ## **1.3 Long-Term Support (LTS) vs. Innovation Releases**
 
@@ -112,7 +88,7 @@ Oracle Database releases are categorized into two types: **Long-Term Support (LT
 - **Production Environments:** Always use LTS releases for stability and long-term support.
 - **Testing and Development:** Use Innovation Releases to evaluate new features before they are included in LTS releases.
 
----
+<br>
 
 ## **1.4 Summary of Oracle Database Versions**
 
@@ -136,4 +112,4 @@ Oracle Database releases are categorized into two types: **Long-Term Support (LT
 - Long-Term Support (LTS) releases are ideal for production environments, while Innovation Releases are best for testing new features.
 - Understanding the history and evolution of Oracle Database helps DBAs make informed decisions about upgrades and migrations.
 
----
+<br>
