@@ -1,8 +1,8 @@
 ---
 
-# Oracle Database Versions: A Technical Reference Guide for DBAs
+# ***Oracle Database Versions: A Technical Reference Guide for DBAs***
 
-Welcome to the **Oracle Database Versions: A Technical Reference Guide for DBAs** repository! This repository contains a comprehensive guide to understanding Oracle Database versions, their features, and best practices for upgrading, migrating, and optimizing databases. Each chapter is provided as a Markdown file, making it easy to read and navigate.
+Welcome to the ***Oracle Database Versions = A Technical Reference Guide for DBAs***  repository! This repository contains a comprehensive guide to understanding Oracle Database versions, their features, and best practices for upgrading, migrating, and optimizing databases. Each chapter is provided as a Markdown file, making it easy to read and navigate.
 
 ---
 
