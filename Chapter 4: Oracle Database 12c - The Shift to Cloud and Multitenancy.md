@@ -1,4 +1,3 @@
-**"Oracle Database Versions: A Technical Reference Guide for DBAs."** 
 This chapter focuses on **Oracle Database 12c**, which introduced groundbreaking features like **multitenant architecture**, **In-Memory Column Store**, and **Adaptive Query Optimization**. It covers the technical aspects of these features, their benefits, and hands-on implementation.
 
 ---
